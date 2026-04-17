@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EtsyHelper</title>
+  <title>toolshelper</title>
   <style>
     * {
       box-sizing: border-box;
@@ -20,6 +20,8 @@
       --white: #ffffff;
       --border: #f1e3da;
       --shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+      --blue-soft: #eef7ff;
+      --blue-border: #d7e9fb;
     }
 
     body {
@@ -83,6 +85,17 @@
       margin: 0 auto;
       color: var(--muted);
       font-size: 1.08rem;
+    }
+
+    .trust-note {
+      max-width: 760px;
+      margin: 18px auto 0;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(241,100,30,0.18);
+      padding: 14px 16px;
+      border-radius: 16px;
+      color: #333;
+      font-size: 0.98rem;
     }
 
     .hero-actions {
@@ -153,7 +166,7 @@
       color: #444;
     }
 
-    ul {
+    ul, ol {
       margin: 10px 0 16px 20px;
     }
 
@@ -172,6 +185,14 @@
     .info-box {
       background: #f5fff8;
       border: 1px solid #dcefe2;
+      padding: 18px;
+      border-radius: 18px;
+      margin-top: 16px;
+    }
+
+    .security-box {
+      background: var(--blue-soft);
+      border: 1px solid var(--blue-border);
       padding: 18px;
       border-radius: 18px;
       margin-top: 16px;
@@ -233,10 +254,15 @@
       <div class="hero-top">
         <span class="badge">Seller Tool for Etsy</span>
         <div>
-          <img src="etsy inco.png" alt="EtsyHelper logo" class="logo" />
+          <img src="etsy inco.png" alt="toolshelper logo" class="logo" />
         </div>
-        <h1>EtsyHelper</h1>
-        <p class="subtitle">A simple browser extension for Etsy sellers that displays useful listing insights directly inside the Etsy interface.</p>
+        <h1>toolshelper</h1>
+        <p class="subtitle">
+          A simple browser extension for Etsy sellers that displays useful listing insights directly inside the Etsy interface.
+        </p>
+        <p class="trust-note">
+          You sign in through Etsy's official authorization flow. EtsyHelper does not ask for your password, your own API key, or your shared secret.
+        </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:amezzaneyasyn1998@gmail.com">Contact Support</a>
           <a class="btn btn-secondary" href="#privacy-policy">Privacy Policy</a>
@@ -244,9 +270,16 @@
       </div>
 
       <div class="content">
-        <h2>About This Application</h2>
-        <p>EtsyHelper is a seller tool designed to help Etsy shop owners quickly view important listing information without opening each listing manually.</p>
-        <p>After a secure OAuth connection with Etsy, the extension reads permitted shop and listing data and displays useful details directly under the product card or listing area inside Etsy.</p>
+        <h2>What This Extension Does</h2>
+        <p>
+          EtsyHelper is a seller tool designed to help Etsy shop owners quickly view important listing information without opening each listing manually.
+        </p>
+        <p>
+          After a secure OAuth connection with Etsy, the extension reads approved shop and listing data and displays a small information card directly below each product or listing inside Etsy.
+        </p>
+        <p>
+          Each card is meant to help sellers review listing performance faster while staying inside the Etsy interface.
+        </p>
 
         <div class="grid">
           <div class="feature-card">
@@ -262,8 +295,8 @@
             <p>See how many users have favorited a listing.</p>
           </div>
           <div class="feature-card">
-            <h3>Sales Count</h3>
-            <p>Display sales related insights for each listing when available through approved access.</p>
+            <h3>Sales Count Per Listing</h3>
+            <p>Display sales insights for each listing when available through approved access.</p>
           </div>
         </div>
 
@@ -271,13 +304,40 @@
           The purpose of EtsyHelper is to save sellers time and make listing analysis easier with clear, useful information shown directly on Etsy pages.
         </div>
 
+        <h2>Secure Connection and Trust</h2>
+        <div class="security-box">
+          <p>
+            EtsyHelper uses official Etsy OAuth for account connection. Users sign in through Etsy, not through this extension.
+          </p>
+          <p>
+            EtsyHelper is designed to provide read-only listing insights and does not create, edit, delete, or modify listings inside a seller's shop.
+          </p>
+          <p>
+            The extension is built to request only the minimum access needed to display listing insight features for the authenticated seller.
+          </p>
+        </div>
+
         <h2>How It Works</h2>
-        <p>The user installs the browser extension and securely connects their Etsy account using Etsy OAuth. After authorization, the application retrieves approved data through Etsy's API and adds a small information card below each product or listing inside the Etsy interface.</p>
-        <p>This card helps sellers quickly review listing details such as creation date, last update date, favorites, and other helpful metrics without leaving the page.</p>
+        <p>
+          The user installs the browser extension and securely connects their Etsy account using Etsy OAuth. After authorization, the application retrieves approved data through Etsy's API and adds a small information card below each product or listing inside the Etsy interface.
+        </p>
+        <p>
+          This card helps sellers quickly review listing details such as creation date, last update date, favorites, and sales per listing without leaving the page.
+        </p>
+
+        <ol>
+          <li>Install the extension</li>
+          <li>Connect securely with Etsy</li>
+          <li>Approve access through Etsy's official login flow</li>
+          <li>Open Etsy listing pages</li>
+          <li>View an insight card below each product or listing</li>
+        </ol>
 
         <div class="info-box">
           <strong>Typical use case</strong>
-          <p>A seller opens Etsy listings pages, and EtsyHelper adds a simple card under each listing to make review and comparison faster.</p>
+          <p>
+            A seller opens Etsy listing pages, and EtsyHelper adds a simple card under each listing to make review and comparison faster.
+          </p>
           <div class="mini-grid">
             <div class="mini-item">
               <strong>Application Type</strong>
@@ -294,6 +354,26 @@
           </div>
         </div>
 
+        <h2>What We Access</h2>
+        <p>
+          EtsyHelper only requests the permissions needed to provide its core features.
+        </p>
+        <ul>
+          <li>Listing metadata needed to show creation and update dates</li>
+          <li>Listing favorites data when available through approved access</li>
+          <li>Authorized seller account access through Etsy OAuth</li>
+          <li>Approved data required to calculate or display listing insights</li>
+        </ul>
+
+        <h2>What We Do Not Collect</h2>
+        <ul>
+          <li>We do not collect your Etsy password</li>
+          <li>We do not ask you to paste your own Etsy API key</li>
+          <li>We do not ask for your shared secret</li>
+          <li>We do not create, edit, or delete your listings</li>
+          <li>We do not change your shop settings</li>
+        </ul>
+
         <h2>Why It Is Useful</h2>
         <ul>
           <li>Reduces time spent opening listings one by one</li>
@@ -302,16 +382,41 @@
           <li>Creates a simpler workflow inside Etsy</li>
         </ul>
 
+        <h2>Why Sellers Can Trust EtsyHelper</h2>
+        <ul>
+          <li>Official Etsy OAuth connection</li>
+          <li>No password collection inside the extension</li>
+          <li>No manual API key entry required</li>
+          <li>Read-only listing insights</li>
+          <li>Clear explanation of permissions and data usage</li>
+        </ul>
+
         <h2>Commercial Use</h2>
-        <p>This application may be offered as a public seller tool and may be used in a commercial context depending on the final deployment model.</p>
+        <p>
+          This application may be offered as a public seller tool and may be used in a commercial context depending on the final deployment model.
+        </p>
 
         <h2 id="privacy-policy">Privacy Policy</h2>
-        <p>EtsyHelper only requests the permissions needed to provide its core features. The application is intended to access approved Etsy data required to display listing insights for the authenticated seller.</p>
-        <p>The application does not ask users to create or share their own Etsy API key. Access is handled through Etsy OAuth authorization.</p>
-        <p>User data is used only to provide the application's features and improve the seller experience. Sensitive account access should be stored and handled securely.</p>
-        
+        <p>
+          EtsyHelper only requests the permissions needed to provide its core features. The application is intended to access approved Etsy data required to display listing insights for the authenticated seller.
+        </p>
+        <p>
+          The application does not ask users to create or share their own Etsy API key. Access is handled through Etsy OAuth authorization.
+        </p>
+        <p>
+          User data is used only to provide the application's features and improve the seller experience. Sensitive account access should be stored and handled securely.
+        </p>
+        <p>
+          EtsyHelper aims to collect only what is necessary for core functionality. Users should be able to disconnect their Etsy account and revoke access at any time.
+        </p>
+
+        <h2>Contact and Support</h2>
+        <p>
+          If you have questions about privacy, permissions, or how EtsyHelper works, please contact support before connecting your account.
+        </p>
+
         <div class="footer">
-          <p><strong>App name:</strong> EtsyHelper</p>
+          <p><strong>App name:</strong> toolshelper</p>
           <p><strong>Description:</strong> A browser extension that helps Etsy sellers view key listing insights directly inside Etsy.</p>
         </div>
       </div>
