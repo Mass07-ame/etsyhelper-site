@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EtsyHelper</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --etsy-orange: #f1641e;
+      --soft-orange: #fff2ea;
+      --green: #32b45f;
+      --text: #2b2b2b;
+      --muted: #666;
+      --white: #ffffff;
+      --border: #f1e3da;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #fff7f1 0%, #f8fff9 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 36px 20px 60px;
+    }
+
+    .hero {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-top {
+      background: linear-gradient(135deg, rgba(241,100,30,0.12), rgba(50,180,95,0.12));
+      padding: 40px 28px 28px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 150px;
+      max-width: 100%;
+      display: inline-block;
+      margin-bottom: 14px;
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(241,100,30,0.12);
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--etsy-orange);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      color: #1f1f1f;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--etsy-orange);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--green);
+      border: 1px solid #d8efdf;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .content {
+      padding: 30px 28px 34px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 22px 0 28px;
+    }
+
+    .feature-card {
+      background: #fffaf6;
+      border: 1px solid #f7dfd0;
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.02rem;
+      margin-bottom: 8px;
+      color: #222;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin: 28px 0 12px;
+      color: #222;
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: #444;
+    }
+
+    ul {
+      margin: 10px 0 16px 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .highlight {
+      background: var(--soft-orange);
+      border-left: 5px solid var(--etsy-orange);
+      padding: 16px 18px;
+      border-radius: 14px;
+      margin: 18px 0 10px;
+    }
+
+    .info-box {
+      background: #f5fff8;
+      border: 1px solid #dcefe2;
+      padding: 18px;
+      border-radius: 18px;
+      margin-top: 16px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .mini-item {
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .mini-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #222;
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      font-size: 0.96rem;
+      color: #666;
+    }
+
+    a {
+      color: #c24f13;
+    }
+
+    @media (max-width: 780px) {
+      .grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .content,
+      .hero-top {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="hero-top">
+        <span class="badge">Seller Tool for Etsy</span>
+        <div>
+          <img src="etsy inco.png" alt="EtsyHelper logo" class="logo" />
+        </div>
+        <h1>EtsyHelper</h1>
+        <p class="subtitle">A simple browser extension for Etsy sellers that displays useful listing insights directly inside the Etsy interface.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:amezzaneyasyn1998@gmail.com">Contact Support</a>
+          <a class="btn btn-secondary" href="#privacy-policy">Privacy Policy</a>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2>About This Application</h2>
+        <p>EtsyHelper is a seller tool designed to help Etsy shop owners quickly view important listing information without opening each listing manually.</p>
+        <p>After a secure OAuth connection with Etsy, the extension reads permitted shop and listing data and displays useful details directly under the product card or listing area inside Etsy.</p>
+
+        <div class="grid">
+          <div class="feature-card">
+            <h3>Listing Creation Date</h3>
+            <p>Quickly see when a listing was originally created.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Last Update Date</h3>
+            <p>View when the listing was last updated or changed.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Favorites Count</h3>
+            <p>See how many users have favorited a listing.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Sales Count</h3>
+            <p>Display sales related insights for each listing when available through approved access.</p>
+          </div>
+        </div>
+
+        <div class="highlight">
+          The purpose of EtsyHelper is to save sellers time and make listing analysis easier with clear, useful information shown directly on Etsy pages.
+        </div>
+
+        <h2>How It Works</h2>
+        <p>The user installs the browser extension and securely connects their Etsy account using Etsy OAuth. After authorization, the application retrieves approved data through Etsy's API and adds a small information card below each product or listing inside the Etsy interface.</p>
+        <p>This card helps sellers quickly review listing details such as creation date, last update date, favorites, and other helpful metrics without leaving the page.</p>
+
+        <div class="info-box">
+          <strong>Typical use case</strong>
+          <p>A seller opens Etsy listings pages, and EtsyHelper adds a simple card under each listing to make review and comparison faster.</p>
+          <div class="mini-grid">
+            <div class="mini-item">
+              <strong>Application Type</strong>
+              Seller Tools
+            </div>
+            <div class="mini-item">
+              <strong>Target Users</strong>
+              Etsy sellers
+            </div>
+            <div class="mini-item">
+              <strong>Access Method</strong>
+              Browser extension with secure Etsy OAuth
+            </div>
+          </div>
+        </div>
+
+        <h2>Why It Is Useful</h2>
+        <ul>
+          <li>Reduces time spent opening listings one by one</li>
+          <li>Makes important listing details easier to review</li>
+          <li>Helps sellers organize and analyze listings faster</li>
+          <li>Creates a simpler workflow inside Etsy</li>
+        </ul>
+
+        <h2>Commercial Use</h2>
+        <p>This application may be offered as a public seller tool and may be used in a commercial context depending on the final deployment model.</p>
+
+        <h2 id="privacy-policy">Privacy Policy</h2>
+        <p>EtsyHelper only requests the permissions needed to provide its core features. The application is intended to access approved Etsy data required to display listing insights for the authenticated seller.</p>
+        <p>The application does not ask users to create or share their own Etsy API key. Access is handled through Etsy OAuth authorization.</p>
+        <p>User data is used only to provide the application's features and improve the seller experience. Sensitive account access should be stored and handled securely.</p>
+        
+        <div class="footer">
+          <p><strong>App name:</strong> EtsyHelper</p>
+          <p><strong>Description:</strong> A browser extension that helps Etsy sellers view key listing insights directly inside Etsy.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
