@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>toolshelper</title>
+  <title>Toolshelper</title>
   <style>
     * {
       box-sizing: border-box;
@@ -13,95 +13,169 @@
 
     :root {
       --etsy-orange: #f1641e;
-      --soft-orange: #fff2ea;
+      --etsy-orange-dark: #cf4f0f;
+      --soft-orange: #fff3eb;
+      --soft-orange-2: #fff8f4;
       --green: #32b45f;
-      --text: #2b2b2b;
-      --muted: #666;
-      --white: #ffffff;
-      --border: #f1e3da;
-      --shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+      --soft-green: #f4fff7;
+      --soft-green-border: #d9efdf;
       --blue-soft: #eef7ff;
       --blue-border: #d7e9fb;
+      --yellow-soft: #fffdf5;
+      --yellow-border: #f3e8b2;
+      --text: #222;
+      --muted: #666;
+      --white: #fff;
+      --border: #f2e4dc;
+      --shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 1140px;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #fff7f1 0%, #f8fff9 100%);
+      background:
+        radial-gradient(circle at top left, rgba(241,100,30,0.08), transparent 26%),
+        radial-gradient(circle at top right, rgba(50,180,95,0.08), transparent 20%),
+        linear-gradient(135deg, #fff8f4 0%, #f7fff9 100%);
       color: var(--text);
       line-height: 1.7;
     }
 
+    a {
+      color: var(--etsy-orange-dark);
+      text-decoration: none;
+    }
+
     .container {
-      max-width: 980px;
+      max-width: var(--max-width);
       margin: 0 auto;
-      padding: 36px 20px 60px;
+      padding: 24px 20px 70px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 14px;
+      z-index: 50;
+      margin-bottom: 24px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+      padding: 12px 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      object-fit: contain;
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(241,100,30,0.12);
+      flex-shrink: 0;
+    }
+
+    .brand strong {
+      font-size: 1.05rem;
+      color: #1f1f1f;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: #444;
+      font-size: 0.95rem;
+      font-weight: 600;
     }
 
     .hero {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 28px;
+      border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
 
-    .hero-top {
-      background: linear-gradient(135deg, rgba(241,100,30,0.12), rgba(50,180,95,0.12));
-      padding: 40px 28px 28px;
-      text-align: center;
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      padding: 46px 34px;
+      background: linear-gradient(135deg, rgba(241,100,30,0.12), rgba(50,180,95,0.10));
     }
 
-    .logo {
-      width: 150px;
-      max-width: 100%;
-      display: inline-block;
-      margin-bottom: 14px;
-      border-radius: 22px;
-      background: #fff;
-      box-shadow: 0 8px 24px rgba(241,100,30,0.12);
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .badge {
       display: inline-block;
+      align-self: flex-start;
       background: var(--etsy-orange);
       color: #fff;
       padding: 8px 14px;
       border-radius: 999px;
       font-size: 0.9rem;
-      margin-bottom: 16px;
       font-weight: 700;
       letter-spacing: 0.2px;
+      margin-bottom: 16px;
     }
 
     h1 {
-      font-size: 2.5rem;
-      line-height: 1.15;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      line-height: 1.08;
+      margin-bottom: 14px;
       color: #1f1f1f;
     }
 
     .subtitle {
-      max-width: 720px;
-      margin: 0 auto;
-      color: var(--muted);
       font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 18px;
     }
 
-    .trust-note {
-      max-width: 760px;
-      margin: 18px auto 0;
-      background: rgba(255,255,255,0.75);
+    .hero-note {
+      background: rgba(255,255,255,0.84);
       border: 1px solid rgba(241,100,30,0.18);
       padding: 14px 16px;
-      border-radius: 16px;
+      border-radius: var(--radius-md);
       color: #333;
-      font-size: 0.98rem;
+      margin-bottom: 20px;
+      max-width: 700px;
     }
 
     .hero-actions {
-      margin-top: 22px;
       display: flex;
-      justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
     }
@@ -128,36 +202,106 @@
 
     .btn:hover {
       transform: translateY(-1px);
-      opacity: 0.96;
+      opacity: 0.97;
     }
 
-    .content {
-      padding: 30px 28px 34px;
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin: 22px 0 28px;
+    .mock-card {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
     }
 
-    .feature-card {
-      background: #fffaf6;
-      border: 1px solid #f7dfd0;
+    .mock-product {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .mock-thumb {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #ffd6bf, #ffeede);
+      flex-shrink: 0;
+      border: 1px solid #f3ddd0;
+    }
+
+    .mock-lines {
+      flex: 1;
+    }
+
+    .line {
+      height: 12px;
+      border-radius: 999px;
+      background: #f1f1f1;
+      margin-bottom: 10px;
+    }
+
+    .line.short {
+      width: 58%;
+    }
+
+    .line.medium {
+      width: 76%;
+    }
+
+    .insight-box {
+      background: var(--soft-orange);
+      border: 1px solid #f4d6c4;
       border-radius: 18px;
-      padding: 18px;
+      padding: 16px;
     }
 
-    .feature-card h3 {
-      font-size: 1.02rem;
-      margin-bottom: 8px;
+    .insight-box h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
       color: #222;
     }
 
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.96rem;
+    }
+
+    .stat:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section {
+      margin-top: 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 30px 28px;
+      scroll-margin-top: 90px;
+    }
+
     h2 {
-      font-size: 1.35rem;
-      margin: 28px 0 12px;
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+      color: #222;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
       color: #222;
     }
 
@@ -174,28 +318,54 @@
       margin-bottom: 8px;
     }
 
+    .grid-2,
+    .grid-4 {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: var(--radius-lg);
+      padding: 18px;
+    }
+
+    .soft-orange-card {
+      background: #fffaf6;
+      border-color: #f7dfd0;
+    }
+
+    .soft-green-card {
+      background: var(--soft-green);
+      border-color: var(--soft-green-border);
+    }
+
+    .soft-blue-card {
+      background: var(--blue-soft);
+      border-color: var(--blue-border);
+    }
+
+    .soft-yellow-card {
+      background: var(--yellow-soft);
+      border-color: var(--yellow-border);
+    }
+
     .highlight {
       background: var(--soft-orange);
       border-left: 5px solid var(--etsy-orange);
       padding: 16px 18px;
       border-radius: 14px;
-      margin: 18px 0 10px;
-    }
-
-    .info-box {
-      background: #f5fff8;
-      border: 1px solid #dcefe2;
-      padding: 18px;
-      border-radius: 18px;
-      margin-top: 16px;
-    }
-
-    .security-box {
-      background: var(--blue-soft);
-      border: 1px solid var(--blue-border);
-      padding: 18px;
-      border-radius: 18px;
-      margin-top: 16px;
+      margin-top: 18px;
     }
 
     .mini-grid {
@@ -218,30 +388,52 @@
       color: #222;
     }
 
+    .faq-item {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
     .footer {
-      margin-top: 32px;
-      padding-top: 20px;
+      margin-top: 34px;
+      padding-top: 18px;
       border-top: 1px solid #eee;
       font-size: 0.96rem;
       color: #666;
     }
 
-    a {
-      color: #c24f13;
+    .small {
+      font-size: 0.96rem;
+      color: var(--muted);
     }
 
-    @media (max-width: 780px) {
-      .grid,
+    @media (max-width: 920px) {
+      .hero-inner,
+      .grid-2,
+      .grid-4,
       .mini-grid {
         grid-template-columns: 1fr;
       }
 
-      h1 {
-        font-size: 2rem;
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .content,
-      .hero-top {
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      h1 {
+        font-size: 2.1rem;
+      }
+
+      .section,
+      .hero-inner {
         padding-left: 20px;
         padding-right: 20px;
       }
@@ -250,175 +442,341 @@
 </head>
 <body>
   <div class="container">
-    <section class="hero">
-      <div class="hero-top">
-        <span class="badge">Seller Tool for Etsy</span>
-        <div>
-          <img src="etsy inco.png" alt="toolshelper logo" class="logo" />
+    <div class="topbar">
+      <nav class="nav">
+        <div class="brand">
+          <img src="etsy inco.png" alt="Toolshelper logo" />
+          <strong>Toolshelper</strong>
         </div>
-        <h1>toolshelper</h1>
-        <p class="subtitle">
-          A simple browser extension for Etsy sellers that displays useful listing insights directly inside the Etsy interface.
-        </p>
-        <p class="trust-note">
-          You sign in through Etsy's official authorization flow. EtsyHelper does not ask for your password, your own API key, or your shared secret.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:amezzaneyasyn1998@gmail.com">Contact Support</a>
-          <a class="btn btn-secondary" href="#privacy-policy">Privacy Policy</a>
+        <div class="nav-links">
+          <a href="#overview">Overview</a>
+          <a href="#features">Features</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#oauth">OAuth</a>
+          <a href="#permissions">Permissions</a>
+          <a href="#faq">FAQ</a>
+          <a href="#privacy-policy">Privacy</a>
+          <a href="#support">Support</a>
+        </div>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="badge">Seller Tool for Etsy</span>
+          <h1>Toolshelper</h1>
+          <p class="subtitle">
+            Toolshelper is a browser extension for Etsy sellers that adds a compact insight card below each visible product or listing directly inside Etsy, helping sellers review important listing information faster and more clearly.
+          </p>
+          <p class="hero-note">
+            Toolshelper uses Etsy's official OAuth authorization flow. Users connect with their regular Etsy account and do not need to enter a password, API key, or shared secret into the extension.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:amezzaneyasyn1998@gmail.com">Contact Support</a>
+            <a class="btn btn-secondary" href="#privacy-policy">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="mock-card">
+            <div class="mock-product">
+              <div class="mock-thumb"></div>
+              <div class="mock-lines">
+                <div class="line medium"></div>
+                <div class="line short"></div>
+              </div>
+            </div>
+            <div class="insight-box">
+              <h3>Listing Insights</h3>
+              <div class="stat"><span>Created</span><strong>2025-11-08</strong></div>
+              <div class="stat"><span>Updated</span><strong>2026-04-14</strong></div>
+              <div class="stat"><span>Favorites</span><strong>42</strong></div>
+              <div class="stat"><span>Sales</span><strong>19</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <h2>Overview</h2>
+      <p>
+        Toolshelper is built to improve the listing review workflow for Etsy sellers by displaying useful listing insights directly where the seller is already working.
+      </p>
+      <p>
+        Instead of opening listings one by one, the seller can review key information immediately below each listing in a small, readable, minimal card.
+      </p>
+      <div class="highlight">
+        The main goal of Toolshelper is to provide clear listing insights directly inside Etsy while keeping the original Etsy experience as intact and uncluttered as possible.
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <h2>Core Listing Insights</h2>
+      <div class="grid-4">
+        <div class="card soft-orange-card">
+          <h3>Created Date</h3>
+          <p>Shows when the listing was originally created.</p>
+        </div>
+        <div class="card soft-orange-card">
+          <h3>Updated Date</h3>
+          <p>Shows the most recent update date for the listing.</p>
+        </div>
+        <div class="card soft-orange-card">
+          <h3>Favorites Count</h3>
+          <p>Shows how many users have favorited the listing.</p>
+        </div>
+        <div class="card soft-orange-card">
+          <h3>Sales Per Listing</h3>
+          <p>Shows listing-level sales insights calculated from approved Etsy data.</p>
         </div>
       </div>
 
-      <div class="content">
-        <h2>What This Extension Does</h2>
-        <p>
-          EtsyHelper is a seller tool designed to help Etsy shop owners quickly view important listing information without opening each listing manually.
-        </p>
-        <p>
-          After a secure OAuth connection with Etsy, the extension reads approved shop and listing data and displays a small information card directly below each product or listing inside Etsy.
-        </p>
-        <p>
-          Each card is meant to help sellers review listing performance faster while staying inside the Etsy interface.
-        </p>
+      <h2>How the Card Appears</h2>
+      <ul>
+        <li>The card appears directly below each product or listing inside Etsy.</li>
+        <li>The card is injected into the page DOM.</li>
+        <li>The design is intentionally compact, clean, and easy to scan.</li>
+        <li>The layout is designed to avoid disrupting Etsy's original page structure.</li>
+        <li>The card focuses only on the most useful listing information.</li>
+      </ul>
 
-        <div class="grid">
-          <div class="feature-card">
-            <h3>Listing Creation Date</h3>
-            <p>Quickly see when a listing was originally created.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Last Update Date</h3>
-            <p>View when the listing was last updated or changed.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Favorites Count</h3>
-            <p>See how many users have favorited a listing.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Sales Count Per Listing</h3>
-            <p>Display sales insights for each listing when available through approved access.</p>
-          </div>
+      <h2>Sort by Newest</h2>
+      <p>
+        Toolshelper includes a <strong>Sort by Newest</strong> option to help sellers review newly created listings first.
+      </p>
+      <ul>
+        <li>The sorting target is based on listing creation date.</li>
+        <li>This supports a faster review workflow for recent listings.</li>
+        <li>The sorting behavior is intended to remain simple and predictable.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="workflow">
+      <h2>How the Product Works</h2>
+      <div class="grid-2">
+        <div class="card soft-green-card">
+          <h3>Extension Responsibilities</h3>
+          <ul>
+            <li>Reads visible Etsy listings from the current page</li>
+            <li>Identifies each listing inside the page DOM</li>
+            <li>Requests listing insight data from the serverless backend</li>
+            <li>Inserts a compact insight card below each listing</li>
+          </ul>
         </div>
 
-        <div class="highlight">
-          The purpose of EtsyHelper is to save sellers time and make listing analysis easier with clear, useful information shown directly on Etsy pages.
+        <div class="card soft-green-card">
+          <h3>Serverless Backend Responsibilities</h3>
+          <ul>
+            <li>Stores the application's API key securely</li>
+            <li>Handles Etsy OAuth authorization</li>
+            <li>Retrieves approved Etsy data through the Etsy API</li>
+            <li>Builds listing insights for the extension</li>
+            <li>Returns created date, updated date, favorites count, and sales per listing</li>
+          </ul>
         </div>
+      </div>
 
-        <h2>Secure Connection and Trust</h2>
-        <div class="security-box">
-          <p>
-            EtsyHelper uses official Etsy OAuth for account connection. Users sign in through Etsy, not through this extension.
-          </p>
-          <p>
-            EtsyHelper is designed to provide read-only listing insights and does not create, edit, delete, or modify listings inside a seller's shop.
-          </p>
-          <p>
-            The extension is built to request only the minimum access needed to display listing insight features for the authenticated seller.
-          </p>
-        </div>
+      <h2>Data Flow Overview</h2>
+      <ol>
+        <li>The seller installs the Toolshelper browser extension.</li>
+        <li>The seller connects their Etsy account using Etsy's official OAuth flow.</li>
+        <li>The extension reads visible listings on the current Etsy page.</li>
+        <li>The extension sends listing identifiers to the serverless backend.</li>
+        <li>The backend retrieves approved Etsy data and prepares listing insights.</li>
+        <li>The extension renders a card below each listing inside Etsy.</li>
+      </ol>
 
-        <h2>How It Works</h2>
+      <h2>Important Sales Note</h2>
+      <div class="card soft-yellow-card">
         <p>
-          The user installs the browser extension and securely connects their Etsy account using Etsy OAuth. After authorization, the application retrieves approved data through Etsy's API and adds a small information card below each product or listing inside the Etsy interface.
+          Sales per listing is not treated as a simple direct page field.
         </p>
         <p>
-          This card helps sellers quickly review listing details such as creation date, last update date, favorites, and sales per listing without leaving the page.
+          This value may require server-side calculation using approved Etsy transaction or order-related data associated with the specific listing.
         </p>
+        <p>
+          For this reason, sales per listing is generated by the serverless backend and then returned to the extension for display.
+        </p>
+      </div>
+    </section>
 
+    <section class="section" id="oauth">
+      <h2>How OAuth Works</h2>
+      <div class="card soft-blue-card">
+        <p>
+          Toolshelper uses Etsy's official OAuth authorization process to connect a seller account securely.
+        </p>
         <ol>
-          <li>Install the extension</li>
-          <li>Connect securely with Etsy</li>
-          <li>Approve access through Etsy's official login flow</li>
-          <li>Open Etsy listing pages</li>
-          <li>View an insight card below each product or listing</li>
+          <li>The user clicks the connect action.</li>
+          <li>The user is redirected to Etsy's official authorization page.</li>
+          <li>The user signs in with their regular Etsy account.</li>
+          <li>The user approves the requested access.</li>
+          <li>The serverless backend completes the OAuth flow and stores the authorized connection securely.</li>
         </ol>
+        <p>
+          Toolshelper does not ask the user to enter their Etsy password directly into the extension.
+        </p>
+      </div>
+    </section>
 
-        <div class="info-box">
-          <strong>Typical use case</strong>
-          <p>
-            A seller opens Etsy listing pages, and EtsyHelper adds a simple card under each listing to make review and comparison faster.
-          </p>
-          <div class="mini-grid">
-            <div class="mini-item">
-              <strong>Application Type</strong>
-              Seller Tools
-            </div>
-            <div class="mini-item">
-              <strong>Target Users</strong>
-              Etsy sellers
-            </div>
-            <div class="mini-item">
-              <strong>Access Method</strong>
-              Browser extension with secure Etsy OAuth
-            </div>
+    <section class="section" id="permissions">
+      <h2>Permissions and Access</h2>
+      <div class="card soft-green-card">
+        <p>
+          Toolshelper is intended to request only the permissions necessary for its core listing insight features.
+        </p>
+        <ul>
+          <li>Read access for approved listing-related data</li>
+          <li>Read access for approved seller account data needed for the feature</li>
+          <li>Read access for approved transaction or order-related information where needed to calculate sales per listing</li>
+        </ul>
+        <p>
+          Toolshelper is not intended to request unnecessary write access for editing, deleting, or changing shop content.
+        </p>
+      </div>
+
+      <h2>Read-Only Insight Experience</h2>
+      <p>
+        Toolshelper is designed to provide listing insights and improve seller review workflows.
+      </p>
+      <p>
+        It is not intended to create, edit, delete, or modify listings directly from the extension interface.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>User Experience Goals</h2>
+      <ul>
+        <li>Compact, minimal card design</li>
+        <li>Fast review of important listing details</li>
+        <li>Clean display inside Etsy pages</li>
+        <li>Low visual clutter</li>
+        <li>Minimal disruption to Etsy's original interface</li>
+      </ul>
+
+      <h2>Performance and Stability Goals</h2>
+      <ul>
+        <li>The extension should work efficiently on pages with multiple listings.</li>
+        <li>Repeated requests should be reduced through server-side handling and caching where appropriate.</li>
+        <li>The same listing card should not be injected more than once.</li>
+        <li>The extension should continue working as new products appear on the page.</li>
+        <li>The card should load with clear behavior even when data is still being retrieved.</li>
+      </ul>
+
+      <h2>Typical Use Case</h2>
+      <div class="card soft-green-card">
+        <p>
+          A seller opens Etsy listing pages and Toolshelper automatically adds a compact card below each listing so the seller can quickly compare created date, updated date, favorites, and sales per listing.
+        </p>
+
+        <div class="mini-grid">
+          <div class="mini-item">
+            <strong>Application Type</strong>
+            Browser extension for Etsy sellers
+          </div>
+          <div class="mini-item">
+            <strong>Main Display</strong>
+            Insight card below each listing
+          </div>
+          <div class="mini-item">
+            <strong>Access Method</strong>
+            Etsy OAuth with a secure serverless backend
           </div>
         </div>
+      </div>
 
-        <h2>What We Access</h2>
-        <p>
-          EtsyHelper only requests the permissions needed to provide its core features.
-        </p>
-        <ul>
-          <li>Listing metadata needed to show creation and update dates</li>
-          <li>Listing favorites data when available through approved access</li>
-          <li>Authorized seller account access through Etsy OAuth</li>
-          <li>Approved data required to calculate or display listing insights</li>
-        </ul>
+      <h2>Why Toolshelper Is Useful</h2>
+      <ul>
+        <li>Reduces time spent opening listings individually</li>
+        <li>Makes key listing information easier to review</li>
+        <li>Helps sellers compare listings faster</li>
+        <li>Creates a simpler review workflow inside Etsy</li>
+        <li>Supports quick review of new listings through sorting by newest</li>
+      </ul>
+    </section>
 
-        <h2>What We Do Not Collect</h2>
-        <ul>
-          <li>We do not collect your Etsy password</li>
-          <li>We do not ask you to paste your own Etsy API key</li>
-          <li>We do not ask for your shared secret</li>
-          <li>We do not create, edit, or delete your listings</li>
-          <li>We do not change your shop settings</li>
-        </ul>
-
-        <h2>Why It Is Useful</h2>
-        <ul>
-          <li>Reduces time spent opening listings one by one</li>
-          <li>Makes important listing details easier to review</li>
-          <li>Helps sellers organize and analyze listings faster</li>
-          <li>Creates a simpler workflow inside Etsy</li>
-        </ul>
-
-        <h2>Why Sellers Can Trust EtsyHelper</h2>
-        <ul>
-          <li>Official Etsy OAuth connection</li>
-          <li>No password collection inside the extension</li>
-          <li>No manual API key entry required</li>
-          <li>Read-only listing insights</li>
-          <li>Clear explanation of permissions and data usage</li>
-        </ul>
-
-        <h2>Commercial Use</h2>
-        <p>
-          This application may be offered as a public seller tool and may be used in a commercial context depending on the final deployment model.
-        </p>
-
-        <h2 id="privacy-policy">Privacy Policy</h2>
-        <p>
-          EtsyHelper only requests the permissions needed to provide its core features. The application is intended to access approved Etsy data required to display listing insights for the authenticated seller.
-        </p>
-        <p>
-          The application does not ask users to create or share their own Etsy API key. Access is handled through Etsy OAuth authorization.
-        </p>
-        <p>
-          User data is used only to provide the application's features and improve the seller experience. Sensitive account access should be stored and handled securely.
-        </p>
-        <p>
-          EtsyHelper aims to collect only what is necessary for core functionality. Users should be able to disconnect their Etsy account and revoke access at any time.
-        </p>
-
-        <h2>Contact and Support</h2>
-        <p>
-          If you have questions about privacy, permissions, or how EtsyHelper works, please contact support before connecting your account.
-        </p>
-
-        <div class="footer">
-          <p><strong>App name:</strong> toolshelper</p>
-          <p><strong>Description:</strong> A browser extension that helps Etsy sellers view key listing insights directly inside Etsy.</p>
+    <section class="section" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="card soft-yellow-card">
+        <div class="faq-item">
+          <h3>Does Toolshelper ask for my Etsy password?</h3>
+          <p>No. Users sign in through Etsy's official OAuth flow. Toolshelper does not ask users to enter their password directly into the extension.</p>
         </div>
+
+        <div class="faq-item">
+          <h3>Do users need to create their own Etsy API key?</h3>
+          <p>No. Users connect with their Etsy account only. They do not need to create or paste their own Etsy API key or shared secret.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What information does the card display?</h3>
+          <p>The card displays created date, updated date, favorites count, and sales per listing.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Does Toolshelper modify listings?</h3>
+          <p>No. Toolshelper is intended to provide read-only listing insight features and not to modify shop content.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Why is sales per listing handled by the backend?</h3>
+          <p>Because sales per listing may require calculation from approved Etsy transaction or order-related data rather than a simple direct field.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="support">
+      <h2>Support</h2>
+      <p>
+        If you have questions about privacy, permissions, support, or how Toolshelper works, please contact support before connecting your account.
+      </p>
+      <p>
+        Support email: <a href="mailto:amezzaneyasyn1998@gmail.com">amezzaneyasyn1998@gmail.com</a>
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Commercial Use</h2>
+      <p>
+        Toolshelper may be offered as a public seller tool and may be used in a commercial context depending on the final deployment model and Etsy platform approval requirements.
+      </p>
+    </section>
+
+    <section class="section" id="privacy-policy">
+      <h2>Privacy Policy</h2>
+      <p>
+        Toolshelper only requests the permissions needed to provide its core functionality. The application is intended to access approved Etsy data required to display listing insights for the authenticated seller.
+      </p>
+      <p>
+        The application does not ask users to create or share their own Etsy API key. Access is handled through Etsy OAuth authorization.
+      </p>
+      <p>
+        User data is used only to provide the application's features and improve the seller experience. Sensitive account access should be stored and handled securely by the serverless backend.
+      </p>
+      <p>
+        Toolshelper is designed to collect only what is necessary for its core functionality. Users should be able to disconnect their Etsy account and revoke access at any time.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Technical Planning Status</h2>
+      <p>
+        The current product specification includes the following technical planning areas:
+      </p>
+      <ul>
+        <li>Detailed architecture, including endpoints, data flow, caching, and limits</li>
+        <li>Extension UX details, including loading states and performance handling</li>
+        <li>Etsy API field mapping for created date, updated date, favorites, and sales per listing</li>
+      </ul>
+      <p class="small">
+        This page is intended to describe the product clearly for review, support, and application documentation purposes.
+      </p>
+
+      <div class="footer">
+        <p><strong>App name:</strong> Toolshelper</p>
+        <p><strong>Description:</strong> A browser extension that adds a small insight card below each Etsy listing and helps sellers review important listing details more easily.</p>
       </div>
     </section>
   </div>
